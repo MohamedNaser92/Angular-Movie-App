@@ -13,8 +13,6 @@ export class MovieListComponent {
   posterPrefix:string = 'https://image.tmdb.org/t/p/w500/';
   constructor (_MovieService: MovieService){
     _MovieService.getPopularMovies(1).subscribe ((data) => {
-      console.log(data);
-      
       this.trendingMovies = data.results;
     });
   }
