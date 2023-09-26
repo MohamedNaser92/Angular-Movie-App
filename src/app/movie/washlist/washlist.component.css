@@ -1,0 +1,20 @@
+.whole {
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    transition: 0.3s;
+    border: 3px solid rgba(255, 123, 0, 0.158);
+}
+
+.whole:hover {
+    border: 1px solid rgba(255, 123, 0, 0.158);
+    box-shadow: 0 3px 6px 0 rgb(255, 123, 0);
+    scale: 1.05;
+    transition: 0.3s;
+}
+
+.poaster {
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 0px 5px 0 rgb(255, 123, 0);
+}
