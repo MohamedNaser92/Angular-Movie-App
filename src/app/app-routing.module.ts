@@ -7,8 +7,8 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
 	{ path: '', component: MovieListComponent },
-	{ path: '/:id', component: MovieDetailsComponent },
 	{ path: 'search', component: SearchComponent },
+	{ path: 'details/:id', component: MovieDetailsComponent },
 	{ path: '**', component: NotFoundComponent },
 ];
 
