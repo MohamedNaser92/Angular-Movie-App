@@ -99,3 +99,59 @@ img {
 	padding: 2px;
 	border-radius: 3px;
 }
+.paginate {
+	position: relative;
+	padding-bottom: 50px;
+	margin-top: 50px;
+}
+.pagination {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	padding: 10px;
+	background-color: rgb(255, 123, 0);
+	border-radius: 40px;
+	box-shadow: 1px 1px 20px 9px rgba(255, 123, 0, 0.5);
+}
+
+li {
+	display: inline-block;
+	list-style: none;
+}
+
+a {
+	cursor: pointer;
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background-color: black;
+	text-align: center;
+	text-decoration: none;
+	color: #6d4f31eb;
+	border-radius: 4px;
+	margin: 5px;
+	box-shadow: inset 1px 11px 9px 7px rgba(0, 0, 0, 0.1),
+		1px 10px 5px 0px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease;
+}
+li:hover {
+	color: rgb(255, 123, 0);
+	background-color: mainColor;
+}
+a:hover {
+	color: rgb(255, 123, 0);
+	background-color: mainColor;
+}
+a.active {
+	color: rgb(255, 123, 0);
+	background-color: mainColor;
+}
+
+a:first-child a {
+	border-radius: 40px 0 0 40px;
+}
+a:last-child a {
+	border-radius: 0 40px 40px 0;
+}

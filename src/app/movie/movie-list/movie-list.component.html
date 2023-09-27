@@ -28,4 +28,19 @@
 			</div>
 		</div>
 	</div>
+	<div class="paginate">
+		<ul class="pagination">
+			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage - 1 }">
+				<a>&lt;</a>
+			</li>
+			<li *ngFor="let page of generatePageNumbers()">
+				<a [class.active]="page === currentPage" (click)="onPageChange(page)">
+					{{ page }}
+				</a>
+			</li>
+			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage + 1 }">
+				<a>&gt;</a>
+			</li>
+		</ul>
+	</div>
 </section>
