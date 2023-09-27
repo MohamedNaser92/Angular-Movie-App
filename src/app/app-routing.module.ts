@@ -1,6 +1,3 @@
-
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
@@ -11,15 +8,15 @@ import { WashlistComponent } from './movie/washlist/washlist.component';
 
 const routes: Routes = [
 	{ path: '', component: MovieListComponent },
-	{ path: 'watch-list', component: WashlistComponent},
+	{ path: 'movies', component: MovieListComponent },
+	{ path: 'watch-list', component: WashlistComponent },
 	{ path: 'search', component: SearchComponent },
 	{ path: 'details/:id', component: MovieDetailsComponent },
 	{ path: '**', component: NotFoundComponent },
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule {}
