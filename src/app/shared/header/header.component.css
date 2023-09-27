@@ -1,0 +1,16 @@
+nav {
+    background-color: #000 !important;
+}
+
+.navbar-brand {
+    color: rgb(255, 123, 0);
+}
+
+.nav-link{
+    color: #FFF !important;
+    cursor: pointer;
+}
+
+.fa-heart{
+    color: rgb(255, 123, 0);
+}
