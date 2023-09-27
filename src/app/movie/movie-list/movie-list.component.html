@@ -1,20 +1,31 @@
 <section class="home">
-    <div class="container">
-        <div class="row">
-            <div *ngFor="let movie of trendingMovies" class="col-lg-3 border border-0 rounded rounded-5">
-                <div class="movie_card position-relative mb-4">
-                    <div class="movie-img">
-                        <img class="w-100 img-fluid" [src]="posterPrefix+movie.poster_path" alt="">
-                    </div>
-                    <div
-                        class="movie_text position-absolute top-0 d-flex justify-content-center align-items-center flex-wrap flex-column p-3">
-                        <h2 class="title position-absolute">{{movie.title}}</h2>
-                        <p class="text mt-5">{{movie.overview}}</p>
-                    </div>
-                    <button class="show_more btn position-absolute">Show More</button>
-                    <i class="fa-regular fa-heart fa-2xl position-absolute"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div
+				*ngFor="let movie of trendingMovies"
+				class="col-lg-3 border border-0 rounded rounded-5">
+				<div class="movie_card position-relative mb-4">
+					<div class="movie-img">
+						<img
+							class="w-100 img-fluid"
+							[src]="posterPrefix + movie.poster_path"
+							alt="" />
+					</div>
+					<div
+						class="movie_text position-absolute top-0 d-flex justify-content-center align-items-center flex-wrap flex-column p-3">
+						<h2 class="title position-absolute">{{ movie.title }}</h2>
+						<p class="text mt-5">{{ movie.overview }}</p>
+					</div>
+					<button class="show_more btn position-absolute">Show More</button>
+					<i
+						class="fa-regular fa-heart fa-2xl position-absolute f"
+						(click)="toggleWatchlist(movie.id)"
+						[ngClass]="{
+							'fa-solid': isExistInWatchlist(movie.id),
+							'fa-regular': !isExistInWatchlist(movie.id)
+						}"></i>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
