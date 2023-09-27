@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root',
@@ -13,6 +14,7 @@ export class WatchlistService {
 		'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNmRlODkyNjAzNDk0YzU0NzBhM2MzNjE4NzRjN2M2YyIsInN1YiI6IjY1MTFiYzI0MzQ0YThlMDk3MDA0ZjNjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VxW4Gzv-4VGkcXlgL0lmTZ6kI91mbZJjDJ0ly1p34S4';
 
 	private watchlist: Set<number> = new Set<number>();
+
 	private watchlistChanges = new BehaviorSubject<Set<number>>(this.watchlist);
 
 	watchListMovies: Observable<Set<number>> =
@@ -20,7 +22,6 @@ export class WatchlistService {
 
 	constructor(private http: HttpClient) {}
 
-	// Add a movie to the watchlist
 	addToWatchlist(movieId: number): Observable<any> {
 		console.log('watchlist', this.watchlist);
 		if (this.watchlist.has(movieId)) {
@@ -46,7 +47,6 @@ export class WatchlistService {
 		);
 	}
 
-	// Remove a movie from the watchlist
 	removeFromWatchlist(movieId: number): Observable<any> {
 		const url = `${this.baseUrl}/account/${this.accountId}/watchlist`;
 		const body = {
@@ -73,11 +73,20 @@ export class WatchlistService {
 		const headers = new HttpHeaders({
 			Authorization: `Bearer ${this.token}`,
 		});
-
-		return this.http.get(url, { headers });
+		return this.http.get(url, { headers }).pipe(
+			tap((response: any) => {
+				const watchListMovies = response.results;
+				this.watchlist.clear();
+				watchListMovies.forEach((movie: any) => {
+					this.watchlist.add(movie.id);
+				});
+				this.watchlistChanges.next(this.watchlist);
+			})
+		);
 	}
 
 	isExistInWatchlist(movieId: number): boolean {
+		console.log();
 		return this.watchlist.has(movieId);
 	}
 }

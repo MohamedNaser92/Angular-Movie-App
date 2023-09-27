@@ -18,3 +18,8 @@
 	border-radius: 15px;
 	box-shadow: 0 0px 5px 0 rgb(255, 123, 0);
 }
+
+.fa-heart {
+	cursor: pointer;
+}
+

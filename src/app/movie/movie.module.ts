@@ -7,15 +7,12 @@ import { SearchComponent } from './search/search.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    WashlistComponent,
-    MovieDetailsComponent,
-    MovieListComponent,
-    SearchComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+	declarations: [
+		WashlistComponent,
+		MovieDetailsComponent,
+		MovieListComponent,
+		SearchComponent,
+	],
+	imports: [CommonModule, RouterModule],
 })
-export class MovieModule { }
+export class MovieModule {}

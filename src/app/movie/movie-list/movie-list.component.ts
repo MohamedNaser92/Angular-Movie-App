@@ -10,6 +10,7 @@ import { WatchlistService } from '../services/watchlist.service';
 })
 export class MovieListComponent {
 	trendingMovies: MovieInterface[] = [];
+
 	posterPrefix: string = 'https://image.tmdb.org/t/p/w500/';
 	constructor(
 		_MovieService: MovieService,
@@ -21,11 +22,17 @@ export class MovieListComponent {
 			this.trendingMovies = data.results;
 		});
 	}
+	ngOnInit() {
+		this.watchlist.getWatchlistMovies().subscribe((data) => {});
+	}
+
 	toggleWatchlist(movieId: number) {
 		console.log(movieId);
 		this.watchlist.addToWatchlist(movieId).subscribe(() => {});
 	}
+
 	isExistInWatchlist(movieId: number): boolean {
+		console.log();
 		return this.watchlist.isExistInWatchlist(movieId);
 	}
 }
