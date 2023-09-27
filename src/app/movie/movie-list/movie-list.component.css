@@ -149,9 +149,9 @@ a.active {
 	background-color: mainColor;
 }
 
-a:first-child a {
+li:first-child a {
 	border-radius: 40px 0 0 40px;
 }
-a:last-child a {
+li:last-child a {
 	border-radius: 0 40px 40px 0;
 }
