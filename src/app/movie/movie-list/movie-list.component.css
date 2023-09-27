@@ -38,6 +38,10 @@
 	color: #fff;
 }
 
+.text {
+	margin-top: 80px;
+}
+
 .movie_card:hover .movie_text {
 	opacity: 1;
 }
@@ -48,16 +52,13 @@ img {
 
 .title {
 	color: #fff;
-	top: 40px;
+	top: 35px;
+	width: 85%;
 	text-shadow: 0 0 25px #000000;
 }
 
-.likes {
-	top: 110px;
-}
-
 .show_more {
-	bottom: 15px;
+	bottom: 20px;
 	background-color: rgb(255, 123, 0);
 	opacity: 0;
 	left: 20px;
@@ -65,12 +66,16 @@ img {
 	color: #fff;
 }
 
+.show_more:hover {
+	padding: 11px;
+}
+
 .movie_card:hover .show_more {
 	opacity: 1;
 }
 
 .fa-heart {
-	bottom: 32px;
+	bottom: 38px;
 	right: 30px;
 	transition: 0.3s;
 	opacity: 0;
