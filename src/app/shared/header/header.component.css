@@ -1,16 +1,32 @@
 nav {
-    background-color: #000 !important;
+	background-color: #000 !important;
 }
 
 .navbar-brand {
-    color: rgb(255, 123, 0);
+	color: rgb(255, 123, 0);
 }
 
-.nav-link{
-    color: #FFF !important;
-    cursor: pointer;
+.nav-link {
+	color: #fff !important;
+	cursor: pointer;
 }
 
-.fa-heart{
-    color: rgb(255, 123, 0);
+.fa-heart {
+	color: rgb(255, 123, 0);
+	margin: 5px;
+}
+.watchlist {
+	position: relative;
+}
+.counter {
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+
+	/*right: 47%;
+	color: #fff;
+	font-size: 15px; */
 }
