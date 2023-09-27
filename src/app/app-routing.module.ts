@@ -1,3 +1,6 @@
+
+
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
@@ -12,10 +15,11 @@ const routes: Routes = [
 	{ path: 'search', component: SearchComponent },
 	{ path: 'details/:id', component: MovieDetailsComponent },
 	{ path: '**', component: NotFoundComponent },
+
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
