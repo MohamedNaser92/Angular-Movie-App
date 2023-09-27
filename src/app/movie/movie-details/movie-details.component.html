@@ -14,9 +14,9 @@
             <div class="col-lg-8">
                 <div class="movie-text text-white">
                     <h2 class="fs-1">{{movieDetails.title}}</h2>
-                    <p class="fs-5">{{movieDetails.release_date}}</p>
+                    <p class="fs-5">{{ movieDetails.release_date | date : 'yyy' }}</p>
                     <p class="fs-5">Movie Language: {{movieDetails.original_language}}</p>
-                    <span class="rating"><i class="fa-brands fa-imdb fa-xl"></i> {{movieDetails.vote_average}} /10</span>
+                    <span class="rating d-flex "><img class="imdb" src="../../../assets/imdb-seeklogo.com.svg" alt="Imdb Logo"> {{movieDetails.vote_average | number : '1.0-1' }} / 10</span>
                     <p class="fs-5 mt-5">{{movieDetails.overview}}</p>
                 </div>
             </div>

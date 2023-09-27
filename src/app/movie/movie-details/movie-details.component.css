@@ -31,8 +31,11 @@ h3 {
 }
 
 .rating{
-    border: 1px solid #FFF;
-    border-radius: 5px;
-    padding: 6px;
     margin-bottom: 30px;
+}
+
+
+.imdb{
+    width: 5%;
+    margin-right: 5px;
 }
