@@ -1,3 +1,4 @@
+import { SearchService } from '../services/search.service';
 import { Component } from '@angular/core';
 import { MovieInterface } from '../movie-interface';
 import { MovieService } from '../services/movie.service';
@@ -10,21 +11,28 @@ import { ActivatedRoute, Router, Scroll } from '@angular/router';
 	styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent {
+	query: string = '';
+	searchQuery: string = '';
+	filterdMovie: MovieInterface[] = [];
 	trendingMovies: MovieInterface[] = [];
 	currentPage: number = 1;
 	totalPages: number = 500;
-
 	posterPrefix: string = 'https://image.tmdb.org/t/p/w500/';
+
 	constructor(
+		private _SearchService: SearchService,
 		private movieService: MovieService,
 		private watchlist: WatchlistService,
 		private router: Router,
 		private route: ActivatedRoute
-	) {
-		// _MovieService.getPopularMovies(1).subscribe((data) => {
-		// 	console.log(data);
-		// 	this.trendingMovies = data.results;
-		// });
+	) {}
+
+	searchMovies(query: string) {
+		this._SearchService.getSearchedItems(query);
+		this._SearchService.getMovies().subscribe((val) => {
+			this.filterdMovie = val;
+		});
+		this.searchQuery = query;
 	}
 
 	ngOnInit() {

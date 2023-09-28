@@ -67,7 +67,9 @@ img {
 }
 
 .show_more:hover {
-	padding: 11px;
+	scale: 1.1;
+	background-color: rgb(197, 95, 0);
+	box-shadow: 0px 3px 10px 0px #cacaca;
 }
 
 .movie_card:hover .show_more {
@@ -80,6 +82,11 @@ img {
 	transition: 0.3s;
 	opacity: 0;
 	color: rgb(255, 123, 0);
+	z-index: 4;
+}
+
+.fa-heart:hover {
+	scale: 1.1;
 }
 
 .movie_card:hover .fa-heart {
@@ -91,36 +98,28 @@ img {
 	color: rgb(255, 123, 0);
 }
 
-.movie_lang {
-	position: absolute;
-	background-color: rgb(255, 123, 0);
-	top: -10px;
-	left: 4px;
-	padding: 2px;
-	border-radius: 3px;
-}
 .paginate {
 	position: relative;
 	padding-bottom: 50px;
-	margin-top: 50px;
+	margin-top: 50px !important;
 }
+
 .pagination {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	margin: 0;
 	padding: 10px;
-	background-color: rgb(255, 123, 0);
 	border-radius: 40px;
-	box-shadow: 1px 1px 20px 9px rgba(255, 123, 0, 0.5);
 }
 
-li {
+.paginate li {
 	display: inline-block;
 	list-style: none;
 }
 
-a {
+.paginate a {
+	font-size: 1.2rem;
 	cursor: pointer;
 	display: block;
 	width: 40px;
@@ -129,29 +128,32 @@ a {
 	background-color: black;
 	text-align: center;
 	text-decoration: none;
-	color: #6d4f31eb;
+	color: white !important;
 	border-radius: 4px;
 	margin: 5px;
-	box-shadow: inset 1px 11px 9px 7px rgba(0, 0, 0, 0.1),
-		1px 10px 5px 0px rgba(0, 0, 0, 0.5);
-	transition: all 0.3s ease;
-}
-li:hover {
-	color: rgb(255, 123, 0);
-	background-color: mainColor;
-}
-a:hover {
-	color: rgb(255, 123, 0);
-	background-color: mainColor;
-}
-a.active {
-	color: rgb(255, 123, 0);
-	background-color: mainColor;
+	border-radius: 50%;
+	box-shadow: 0 0px 3px 0 rgb(255, 123, 0);
+	transition: 0.3s;
 }
 
-li:first-child a {
-	border-radius: 40px 0 0 40px;
+.paginate li:hover {
+	color: rgb(255, 123, 0) !important;
 }
-li:last-child a {
-	border-radius: 0 40px 40px 0;
+
+.paginate a:hover {
+	color: rgb(255, 123, 0) !important;
+	scale: 1.1;
+	box-shadow: 0 2px 5px 0 rgb(255, 123, 0);
+}
+
+.paginate a.active {
+	color: rgb(255, 123, 0) !important;
+}
+
+.paginate li:first-child a {
+	border-radius: 50% 10px 10px 50%;
+}
+
+.paginate li:last-child a {
+	border-radius: 10px 50% 50% 10px;
 }

@@ -1,3 +1,7 @@
+<app-input
+	(searchMovie)="searchMovies($event)"
+	[searchValue]="searchQuery"></app-input>
+
 <section class="home">
 	<div class="container">
 		<div class="row">
@@ -12,11 +16,13 @@
 							alt="" />
 					</div>
 					<div
-						class="movie_text position-absolute top-0 d-flex justify-content-center align-items-center flex-wrap flex-column p-3">
-						<h2 class="title position-absolute">{{ movie.title }}</h2>
-						<p class="text mt-5"></p>
+						class="movie_text position-absolute top-0 d-flex justify-content-start align-items-start flex-column p-3">
+						<h2 class="title">{{ movie.title | minimizeTitle }}</h2>
+						<p class="text">{{ movie.overview | minimizeDescription }}</p>
 					</div>
-					<button class="show_more btn position-absolute">Show More</button>
+					<a [routerLink]="['/movie-details', movie.id, movie.title]">
+						<button class="show_more btn position-absolute">Show More</button>
+					</a>
 					<i
 						class="fa-regular fa-heart fa-2xl position-absolute f"
 						(click)="toggleWatchlist(movie.id)"
@@ -28,24 +34,19 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="paginate">
 		<ul class="pagination">
-			<li
-				[routerLink]="['/movies']"
-				[queryParams]="{ page: currentPage - 1 }"
-				(click)="top()">
-				<a>&lt;</a>
+			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage - 1 }">
+				<a (click)="top()"><i class="fa-solid fa-chevron-left"></i></a>
 			</li>
 			<li *ngFor="let page of generatePageNumbers()">
 				<a [class.active]="page === currentPage" (click)="onPageChange(page)">
 					{{ page }}
 				</a>
 			</li>
-			<li
-				[routerLink]="['/movies']"
-				[queryParams]="{ page: currentPage + 1 }"
-				(click)="top()">
-				<a>&gt;</a>
+			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage + 1 }">
+				<a (click)="top()"><i class="fa-solid fa-chevron-right"></i></a>
 			</li>
 		</ul>
 	</div>

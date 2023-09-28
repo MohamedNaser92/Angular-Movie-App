@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="container d-flex justify-content-center ">
+        <form>
+            <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" (input)="onSearchInputChange($event)"
+                [value]="_SearchService.getSearchValue()" type="text" class="input"
+                placeholder="What are you looking for?">
+            <a (click)="searchData(query)" routerLink="/search"><button type="search"
+                    class="close-btn">SEARCH</button></a>
+        </form>
+    </div>
+</div>
