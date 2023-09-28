@@ -1,3 +1,22 @@
+
+import { SearchService } from "../services/search.service";
+
+
+export class MovieListComponent {
+  query: string = "";
+  searchQuery: string = "";
+  filterdMovie: MovieInterface[] = [];
+
+  constructor(private _SearchService: SearchService) {}
+
+  searchMovies(query: string) {
+    this._SearchService.getSearchedItems(query);
+    this._SearchService.getMovies().subscribe((val) => {
+      this.filterdMovie = val;
+    });
+    this.searchQuery = query;
+  }
+
 import { Component } from '@angular/core';
 import { MovieInterface } from '../movie-interface';
 import { MovieService } from '../services/movie.service';
@@ -19,7 +38,7 @@ export class MovieListComponent {
 		private movieService: MovieService,
 		private watchlist: WatchlistService,
 		private router: Router,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
 	) {
 		// _MovieService.getPopularMovies(1).subscribe((data) => {
 		// 	console.log(data);
