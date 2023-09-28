@@ -30,7 +30,10 @@
 	</div>
 	<div class="paginate">
 		<ul class="pagination">
-			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage - 1 }">
+			<li
+				[routerLink]="['/movies']"
+				[queryParams]="{ page: currentPage - 1 }"
+				(click)="top()">
 				<a>&lt;</a>
 			</li>
 			<li *ngFor="let page of generatePageNumbers()">
@@ -38,7 +41,10 @@
 					{{ page }}
 				</a>
 			</li>
-			<li [routerLink]="['/movies']" [queryParams]="{ page: currentPage + 1 }">
+			<li
+				[routerLink]="['/movies']"
+				[queryParams]="{ page: currentPage + 1 }"
+				(click)="top()">
 				<a>&gt;</a>
 			</li>
 		</ul>

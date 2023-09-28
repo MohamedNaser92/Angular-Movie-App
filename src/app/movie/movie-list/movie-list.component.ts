@@ -53,7 +53,9 @@ export class MovieListComponent {
 		this.getPopularMovies();
 		window.scrollTo(0, 0);
 	}
-
+	top() {
+		window.scrollTo(0, 0);
+	}
 	// To Add or Remove Movie From Watchlist
 	toggleWatchlist(movieId: number) {
 		console.log(movieId);
