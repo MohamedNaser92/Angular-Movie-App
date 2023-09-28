@@ -1,0 +1,98 @@
+:root {
+    --main-color: rgb(255, 123, 0);
+}
+
+::selection {
+    color: #FFF;
+    background: rgb(255, 123, 0);
+}
+
+.home {
+    margin-top: 120px;
+}
+
+
+.movie_card {
+    border: 1px solid #000;
+    border-radius: 20px;
+    perspective: 1px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 0 0 0 white;
+}
+
+.movie-img {
+    transition: 0.5s;
+}
+
+.movie_card:hover .movie-img {
+    scale: 1.06;
+    cursor: pointer;
+}
+
+
+.movie_card .movie_text {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.268);
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+    opacity: 0;
+    color: #FFF;
+}
+
+.movie_card:hover .movie_text {
+    opacity: 1;
+}
+
+img {
+    height: 500px;
+}
+
+.title {
+    color: #FFF;
+    text-shadow: 0 0 25px #000000
+}
+
+.likes {
+    top: 110px
+}
+
+
+.show_more {
+    bottom: 15px;
+    background-color: rgb(255, 123, 0);
+    opacity: 0;
+    left: 20px;
+    transition: 0.3s;
+    color: #FFF;
+}
+
+.movie_card:hover .show_more {
+    opacity: 1;
+}
+
+.fa-heart {
+    bottom: 32px;
+    right: 30px;
+    background-color: rgb(255, 123, 0);
+    transition: 0.3s;
+    opacity: 0
+}
+
+.movie_card:hover .fa-heart {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.fa-thumbs-up {
+    color: rgb(255, 123, 0);
+}
+
+.movie_lang {
+    position: absolute;
+    background-color: rgb(255, 123, 0);
+    top: -10px;
+    left: 4px;
+    padding: 2px;
+    border-radius: 3px;
+}

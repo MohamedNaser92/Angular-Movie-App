@@ -8,7 +8,8 @@ import { WashlistComponent } from './movie/washlist/washlist.component';
 
 const routes: Routes = [
 	{ path: '', component: MovieListComponent },
-	{ path: 'watch-list', component: WashlistComponent},
+	{ path: 'movies', component: MovieListComponent },
+	{ path: 'watch-list', component: WashlistComponent },
 	{ path: 'search', component: SearchComponent },
 	{ path: 'movie-details/:id/:movieTitle', component: MovieDetailsComponent },
 	{ path: '**', component: NotFoundComponent },
