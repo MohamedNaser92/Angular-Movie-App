@@ -67,7 +67,9 @@ img {
 }
 
 .show_more:hover {
-	padding: 11px;
+	scale: 1.1;
+	background-color: rgb(197, 95, 0);
+	box-shadow: 0px 3px 10px 0px #cacaca;
 }
 
 .movie_card:hover .show_more {
@@ -80,6 +82,11 @@ img {
 	transition: 0.3s;
 	opacity: 0;
 	color: rgb(255, 123, 0);
+	z-index: 4;
+}
+
+.fa-heart:hover {
+	scale: 1.1;
 }
 
 .movie_card:hover .fa-heart {
@@ -89,15 +96,6 @@ img {
 
 .fa-thumbs-up {
 	color: rgb(255, 123, 0);
-}
-
-.movie_lang {
-	position: absolute;
-	background-color: rgb(255, 123, 0);
-	top: -10px;
-	left: 4px;
-	padding: 2px;
-	border-radius: 3px;
 }
 
 .paginate {
@@ -112,17 +110,15 @@ img {
 	transform: translate(-50%, -50%);
 	margin: 0;
 	padding: 10px;
-	/* background-color: rgb(255, 123, 0); */
 	border-radius: 40px;
-	/* box-shadow: 1px 1px 20px 9px rgba(255, 123, 0, 0.5); */
 }
 
-li {
+.paginate li {
 	display: inline-block;
 	list-style: none;
 }
 
-a {
+.paginate a {
 	font-size: 1.2rem;
 	cursor: pointer;
 	display: block;
@@ -140,27 +136,24 @@ a {
 	transition: 0.3s;
 }
 
-li:hover {
+.paginate li:hover {
 	color: rgb(255, 123, 0) !important;
-	background-color: mainColor;
 }
 
-a:hover {
+.paginate a:hover {
 	color: rgb(255, 123, 0) !important;
-	background-color: mainColor;
 	scale: 1.1;
 	box-shadow: 0 2px 5px 0 rgb(255, 123, 0);
 }
 
-a.active {
+.paginate a.active {
 	color: rgb(255, 123, 0) !important;
-	background-color: mainColor;
 }
 
-li:first-child a {
+.paginate li:first-child a {
 	border-radius: 50% 10px 10px 50%;
 }
 
-li:last-child a {
+.paginate li:last-child a {
 	border-radius: 10px 50% 50% 10px;
 }
