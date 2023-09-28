@@ -99,20 +99,22 @@ img {
 	padding: 2px;
 	border-radius: 3px;
 }
+
 .paginate {
 	position: relative;
 	padding-bottom: 50px;
-	margin-top: 50px;
+	margin-top: 50px !important;
 }
+
 .pagination {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	margin: 0;
 	padding: 10px;
-	background-color: rgb(255, 123, 0);
+	/* background-color: rgb(255, 123, 0); */
 	border-radius: 40px;
-	box-shadow: 1px 1px 20px 9px rgba(255, 123, 0, 0.5);
+	/* box-shadow: 1px 1px 20px 9px rgba(255, 123, 0, 0.5); */
 }
 
 li {
@@ -121,6 +123,7 @@ li {
 }
 
 a {
+	font-size: 1.2rem;
 	cursor: pointer;
 	display: block;
 	width: 40px;
@@ -129,29 +132,35 @@ a {
 	background-color: black;
 	text-align: center;
 	text-decoration: none;
-	color: #6d4f31eb;
+	color: white !important;
 	border-radius: 4px;
 	margin: 5px;
-	box-shadow: inset 1px 11px 9px 7px rgba(0, 0, 0, 0.1),
-		1px 10px 5px 0px rgba(0, 0, 0, 0.5);
-	transition: all 0.3s ease;
+	border-radius: 50%;
+	box-shadow: 0 0px 3px 0 rgb(255, 123, 0);
+	transition: 0.3s;
 }
+
 li:hover {
-	color: rgb(255, 123, 0);
+	color: rgb(255, 123, 0) !important;
 	background-color: mainColor;
 }
+
 a:hover {
-	color: rgb(255, 123, 0);
+	color: rgb(255, 123, 0) !important;
 	background-color: mainColor;
+	scale: 1.1;
+	box-shadow: 0 2px 5px 0 rgb(255, 123, 0);
 }
+
 a.active {
-	color: rgb(255, 123, 0);
+	color: rgb(255, 123, 0) !important;
 	background-color: mainColor;
 }
 
 li:first-child a {
-	border-radius: 40px 0 0 40px;
+	border-radius: 50% 10px 10px 50%;
 }
+
 li:last-child a {
-	border-radius: 0 40px 40px 0;
+	border-radius: 10px 50% 50% 10px;
 }
