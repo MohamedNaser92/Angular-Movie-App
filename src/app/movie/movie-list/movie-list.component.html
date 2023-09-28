@@ -1,3 +1,7 @@
+<app-input (searchMovie)="searchMovies($event)" [searchValue]="searchQuery"></app-input>
+
+
+
 <section class="home">
     <div class="container">
         <div class="row">
@@ -6,10 +10,9 @@
                     <div class="movie-img">
                         <img class="w-100 img-fluid" [src]="posterPrefix+movie.poster_path" alt="">
                     </div>
-                    <div
-                        class="movie_text position-absolute top-0 d-flex justify-content-center align-items-center flex-wrap flex-column p-3">
-                        <h2 class="title position-absolute">{{movie.title}}</h2>
-                        <p class="text mt-5">{{movie.overview}}</p>
+                    <div class="movie_text position-absolute top-0 p-3">
+                        <h2 class="title mb-5">{{movie.title}}</h2>
+                        <p class="text mt-5">{{movie.overview | minimizeDescription}}</p>
                     </div>
                     <button class="show_more btn position-absolute">Show More</button>
                     <i class="fa-regular fa-heart fa-2xl position-absolute"></i>
