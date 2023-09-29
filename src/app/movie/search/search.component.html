@@ -1,25 +1,61 @@
 <app-input (searchMovie)="searchMovies($event)"></app-input>
 
 <section class="home">
-    <div class="container">
-        <div class="row">
-            <div class="d-flex align-items-center justify-content-start mb-4  ">
-                <span class="text-white h3 fw-bold me-4 ">Search Result for</span>
-                <span class="text-white fw-medium h5 ">{{searcValue}} </span>
-            </div>
-            <div *ngFor="let movie of filterdMovie" class="col-lg-3 border border-0 rounded rounded-5">
-                <div class="movie_card position-relative mb-4">
-                    <div class="movie-img">
-                        <img class="w-100 img-fluid" [src]="posterPrefix+movie.poster_path">
-                    </div>
-                    <div class="movie_text position-absolute top-0 p-3">
-                        <h2 class="title mb-5">{{movie.title}}</h2>
-                        <p class="text mt-5">{{movie.overview | minimizeDescription}}</p>
-                    </div>
-                    <button class="show_more btn position-absolute">Show More</button>
-                    <i class="fa-regular fa-heart fa-2xl position-absolute"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="d-flex align-items-center justify-content-start mb-4">
+				<span class="text-white h3 fw-bold me-4">Search Result for: </span>
+				<span class="text-white fw-medium h4 me-4"> {{ query }} </span>
+				<br />
+				<br />
+				<span class="text-white fw-medium h5 me-4"> search results: </span>
+				<span class="text-white fw-medium h4"> {{ totalResults }} movies </span>
+			</div>
+			<div
+				*ngFor="let movie of filterdMovie"
+				class="col-lg-3 border border-0 rounded rounded-5">
+				<div class="movie_card position-relative mb-4">
+					<div class="movie-img">
+						<img
+							class="w-100 img-fluid"
+							[src]="posterPrefix + movie.poster_path" />
+					</div>
+					<div class="movie_text position-absolute top-0 p-3">
+						<h2 class="title mb-5">{{ movie.title }}</h2>
+						<p class="text mt-5">{{ movie.overview | minimizeDescription }}</p>
+					</div>
+					<a [routerLink]="['/movie-details', movie.id, movie.title]">
+						<button class="show_more btn position-absolute">Show More</button>
+					</a>
+					<i
+						class="fa-regular fa-heart fa-2xl position-absolute f"
+						(click)="toggleWatchlist(movie.id)"
+						[ngClass]="{
+							'fa-solid': isExistInWatchlist(movie.id),
+							'fa-regular': !isExistInWatchlist(movie.id)
+						}"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="paginate">
+		<ul class="pagination">
+			<li [routerLink]="['/search']">
+				<a (click)="top()" (click)="onPageChange(currentPage - 1)"
+					><i class="fa-solid fa-chevron-left"></i
+				></a>
+			</li>
+			<li *ngFor="let page of generatePageNumbers()">
+				<a [class.active]="page === currentPage" (click)="onPageChange(page)">
+					{{ page }}
+				</a>
+			</li>
+			<li [routerLink]="['/search']">
+				<a (click)="top()" (click)="onPageChange(currentPage + 1)"
+					><i class="fa-solid fa-chevron-right"></i
+				></a>
+			</li>
+		</ul>
+	</div>
 </section>

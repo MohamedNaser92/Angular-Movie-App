@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root',
 })
 export class WatchlistService {
-	private apiKey = '26de892603494c5470a3c361874c7c6c';
 	private baseUrl = 'https://api.themoviedb.org/3';
 	private accountId = '20494923';
 	private token =

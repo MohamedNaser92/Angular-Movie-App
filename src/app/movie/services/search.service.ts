@@ -1,32 +1,54 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { MovieService } from "./movie.service";
-import { MovieInterface } from "../movie-interface";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { MovieInterface } from '../movie-interface';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root",
+	providedIn: 'root',
 })
 export class SearchService {
-  constructor(private _MovieService: MovieService) {}
+	private apiKey = '26de892603494c5470a3c361874c7c6c';
+	private baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
-  movies = new BehaviorSubject<MovieInterface[]>([]);
+	constructor(private http: HttpClient) {}
 
-  getSearchedItems(query: string) {
-    this._MovieService.searchMovies(query).subscribe((res) => {
-      this.movies.next(res.results);
-    });
-  }
+	movies = new BehaviorSubject<MovieInterface[]>([]);
+	moviesSearchPages = new BehaviorSubject<number>(1);
+	searchQuery = new BehaviorSubject<string>('');
+	totalResults = new BehaviorSubject<string>('');
 
-  getMovies() {
-    return this.movies.asObservable();
-  }
+	getSearchedItemsOtherPages(query: string, page: number): Observable<any> {
+		const params = new HttpParams()
+			.set('api_key', this.apiKey)
+			.set('query', query)
+			.set('page', page.toString());
 
-  // to keep value in input after routing
-  searchValue: string = "";
-  setSearchValue(value: string) {
-    this.searchValue = value;
-  }
-  getSearchValue(): string {
-    return this.searchValue;
-  }
+		return this.http.get(this.baseUrl, { params });
+	}
+	getSearchedItems(query: string, page: number) {
+		this.getSearchedItemsOtherPages(query, page).subscribe((res) => {
+			this.movies.next(res.results);
+			this.moviesSearchPages.next(res.total_pages);
+			this.totalResults.next(res.total_results);
+		});
+	}
+
+	getMovies() {
+		return this.movies.asObservable();
+	}
+
+	getMoviesSearchPages() {
+		return this.moviesSearchPages.asObservable();
+	}
+	getMoviesSearchResults() {
+		return this.totalResults.asObservable();
+	}
+	setSearchQuery(query: string) {
+		this.searchQuery.next(query);
+	}
+
+	getSearchQuery() {
+		return this.searchQuery.asObservable();
+	}
 }
