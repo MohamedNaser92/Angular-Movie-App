@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MovieInterface } from '../movie-interface';
 import { MovieService } from '../services/movie.service';
 import { WatchlistService } from '../services/watchlist.service';
-import { ActivatedRoute, Router, Scroll } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-movie-list',
@@ -27,14 +27,6 @@ export class MovieListComponent {
 		private route: ActivatedRoute
 	) {}
 
-	searchMovies(query: string) {
-		this._SearchService.getSearchedItems(query);
-		this._SearchService.getMovies().subscribe((val) => {
-			this.filterdMovie = val;
-		});
-		this.searchQuery = query;
-	}
-
 	ngOnInit() {
 		// To get pages in home
 		this.route.queryParams.subscribe((params) => {
@@ -50,6 +42,10 @@ export class MovieListComponent {
 		this.movieService.getPopularMovies(this.currentPage).subscribe((data) => {
 			this.trendingMovies = data.results;
 		});
+	}
+
+	searchMovies(query: string) {
+		this._SearchService.getSearchedItems(query, this.currentPage);
 	}
 
 	onPageChange(pageNumber: number) {

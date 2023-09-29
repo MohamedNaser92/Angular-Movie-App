@@ -1,23 +1,39 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { SearchService } from "../../services/search.service";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SearchService } from '../../services/search.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: "app-input",
-  templateUrl: "./input.component.html",
-  styleUrls: ["./input.component.css"],
+	selector: 'app-input',
+	templateUrl: './input.component.html',
+	styleUrls: ['./input.component.css'],
 })
 export class InputComponent {
-  query: string = "";
-  @Input() searchValue!: string;
-  @Output() searchMovie = new EventEmitter<string>();
-  constructor(public _SearchService: SearchService) {}
+	query: any = '';
+	@Output() searchMovie = new EventEmitter<string>();
+	constructor(
+		public _SearchService: SearchService,
+		private router: Router,
+		private activatedRoute: ActivatedRoute
+	) {}
 
-  searchData(query: string) {
-    this.searchMovie.emit(query);
-  }
+	ngOnInit() {
+		this.activatedRoute.url.subscribe((segments) => {
+			const isSearchRoute = segments.some(
+				(segment) => segment.path === 'search'
+			);
 
-  onSearchInputChange(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this._SearchService.setSearchValue(value);
-  }
+			if (!isSearchRoute) {
+				this.query = '';
+			} else {
+				this._SearchService.searchQuery.subscribe((query) => {
+					this.query = query;
+				});
+			}
+		});
+	}
+
+	searchData(query: string) {
+		this._SearchService.setSearchQuery(query);
+		this.searchMovie.emit(query);
+	}
 }
