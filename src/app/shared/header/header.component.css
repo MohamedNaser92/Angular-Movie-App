@@ -41,7 +41,8 @@
 
 .watchlist {
 	position: relative;
-	text-shadow: -6px -3px 4px #000000;
+	text-shadow: 1px 0px 20px #000000;
+	font-weight: 600;
 }
 
 .counter {
@@ -51,5 +52,5 @@
 	color: #fff;
 	font-size: 20px;
 	font-weight: 600;
-	text-shadow: -6px -3px 4px #000000;
+	text-shadow: 1px 0px 10px #000000;
 }
