@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { InputComponent } from "./search/input/input.component";
 import { SearchService } from "./services/search.service";
 import { MinimizeTitlePipe } from "./pipes/minimize-title.pipe";
+import { RecomnededComponent } from './recomneded/recomneded.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MinimizeTitlePipe } from "./pipes/minimize-title.pipe";
     MinimizeDescriptionPipe,
     InputComponent,
     MinimizeTitlePipe,
+    RecomnededComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule],
   providers: [SearchService],

@@ -1,0 +1,23 @@
+<h2 style="font-weight: bold; margin-top: 200px; margin-bottom: 80px; color: rgb(255,123,0);">Recommended Movies:</h2>
+<div class="row">
+    <div *ngFor="let movie of recommendedMovies" class="col-lg-3 border border-0 rounded rounded-5">
+        <div class="movie_card position-relative" style="height: 350px;">
+            <div class="movie-img">
+                <img class="w-100 img-fluid" [src]="posterPrefix + movie.poster_path" />
+            </div>
+            <div class="rate position-absolute">
+                <p>{{ movie.vote_average | number : '1.0-1' }} / 10</p>
+            </div>
+
+            <div
+                class="movie_text position-absolute top-0 d-flex justify-content-start align-items-start flex-column p-3">
+                <h4 class="title mt-3">{{ movie.title}}</h4>
+                <p class="title mt-3">{{ movie.overview | minimizeDescription:100}}</p>
+            </div>
+
+            <a [routerLink]="['/movie-details', movie.id, movie.title]">
+                <button class="show_more btn position-absolute">Show More</button>
+            </a>
+        </div>
+    </div>
+</div>

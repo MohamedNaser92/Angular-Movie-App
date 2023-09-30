@@ -4,10 +4,10 @@ import { Pipe, PipeTransform } from "@angular/core";
   name: "minimizeDescription",
 })
 export class MinimizeDescriptionPipe implements PipeTransform {
-  transform(overview: string): string {
-    if (overview.length < 250) {
+  transform(overview: string, words: number): string {
+    if (overview.length < words) {
       return overview;
     }
-    return overview.slice(0, 250) + "...";
+    return overview.slice(0, words) + "...";
   }
 }
