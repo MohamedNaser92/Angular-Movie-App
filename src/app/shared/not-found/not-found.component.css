@@ -18,23 +18,23 @@ svg {
     width: 500px;
     height: 400px;
     text-align: center;
-    fill: rgb(255, 123, 0);
+    fill: var(--main-color);
 }
 
 path#XMLID_5_ {
 
-    fill: rgb(255, 123, 0);
+    fill: var(--main-color);
     filter: url(#blurFilter4);
 }
 
 path#XMLID_11_,
 path#XMLID_2_ {
-    fill: rgb(255, 123, 0);
+    fill: var(--main-color);
 }
 
 .circle {
     animation: out 2s infinite ease-out;
-    fill: rgb(255, 123, 0);
+    fill: var(--main-color);
 }
 
 #container {
@@ -43,7 +43,7 @@ path#XMLID_2_ {
 
 .message {
     font-size: 40px;
-    color: rgb(255, 123, 0);
+    color: var(--main-color);
 }
 
 .message:after {
@@ -57,7 +57,7 @@ path#XMLID_2_ {
 .message:after,
 .message:before {
 
-    color: rgb(255, 123, 0);
+    color: var(--main-color);
     font-size: 40px;
     -webkit-animation-name: opacity;
     -webkit-animation-duration: 2s;
@@ -124,7 +124,7 @@ path#XMLID_2_ {
 
 .goHome {
     margin-top: 100px;
-    background-color: rgb(255, 123, 0) !important;
+    background-color: var(--main-color) !important;
     font-size: 1.6rem !important;
     transition: 0.3s;
 }

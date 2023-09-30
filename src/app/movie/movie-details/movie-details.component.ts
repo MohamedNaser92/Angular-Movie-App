@@ -4,6 +4,7 @@ import { MovieService } from '../services/movie.service';
 import { MovieInterface } from '../movie-interface';
 import { CommonModule } from '@angular/common';
 import { WatchlistService } from '../services/watchlist.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
 	selector: 'app-movie-details',
@@ -14,15 +15,18 @@ export class MovieDetailsComponent implements OnInit {
 	constructor(
 		private _ActivatedRoute: ActivatedRoute,
 		private _MovieService: MovieService,
-		private watchlist: WatchlistService
+		private watchlist: WatchlistService,
+		private Title: Title
 	) {}
 	movieId: any;
-	movieDetails!: any;
+	movieDetails?: MovieInterface;
 	posterPrefix: string = 'https://image.tmdb.org/t/p/w500/';
 	ngOnInit(): void {
 		this._ActivatedRoute.paramMap.subscribe((params) => {
 			this.movieId = params.get('id');
 		});
+
+		this.Title.setTitle("Movie Details");
 
 		this._MovieService.getMovieDetails(this.movieId).subscribe({
 			next: (response) => (this.movieDetails = response),

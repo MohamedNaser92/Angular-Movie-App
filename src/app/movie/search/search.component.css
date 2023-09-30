@@ -1,23 +1,44 @@
 :root {
-	--main-color: rgb(255, 123, 0);
+	--main-color: var(--main-color);
 }
 
 ::selection {
 	color: #fff;
-	background: rgb(255, 123, 0);
+	background: var(--main-color);
 }
 
-.home {
-	margin-top: 120px;
+.res {
+	border: 1px solid var(--main-color);
+	border-radius: 15px;
 }
 
 .movie_card {
-	border: 1px solid #000;
 	border-radius: 20px;
 	perspective: 1px;
 	overflow: hidden;
 	transition: 0.3s;
-	box-shadow: 0 0 0 0 white;
+	margin-bottom: 60px !important;
+	box-shadow: 0px 0px 10px 0px var(--main-color);
+}
+
+.movie_card .rate {
+	width: 85px;
+	height: 30px;
+	line-height: 2;
+	text-align: center;
+	border-bottom-left-radius: 20px;
+	font-size: 1rem;
+	opacity: 0;
+	top: 0 !important;
+	color: white !important;
+	background: rgba(255, 123, 0, 0.268);
+	transition: 0.3s;
+	right: 0 !important;
+	z-index: 4;
+}
+
+.movie_card:hover .rate {
+	opacity: 1;
 }
 
 .movie-img {
@@ -57,7 +78,7 @@ img {
 
 .show_more {
 	bottom: 15px;
-	background-color: rgb(255, 123, 0);
+	background-color: var(--main-color);
 	opacity: 0;
 	left: 20px;
 	transition: 0.3s;
@@ -73,9 +94,10 @@ img {
 	right: 30px;
 	transition: 0.3s;
 	opacity: 0;
-	color: rgb(255, 123, 0);
+	color: var(--main-color);
 	z-index: 4;
 }
+
 .fa-heart:hover {
 	scale: 1.1;
 }
@@ -86,12 +108,12 @@ img {
 }
 
 .fa-thumbs-up {
-	color: rgb(255, 123, 0);
+	color: var(--main-color);
 }
 
 .movie_lang {
 	position: absolute;
-	background-color: rgb(255, 123, 0);
+	background-color: var(--main-color);
 	top: -10px;
 	left: 4px;
 	padding: 2px;
@@ -119,35 +141,35 @@ img {
 }
 
 .paginate a {
-	font-size: 1.2rem;
 	cursor: pointer;
 	display: block;
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
 	background-color: black;
+	font-size: 1.2rem;
 	text-align: center;
 	text-decoration: none;
 	color: white !important;
 	border-radius: 4px;
 	margin: 5px;
 	border-radius: 50%;
-	box-shadow: 0 0px 3px 0 rgb(255, 123, 0);
+	box-shadow: 0 0px 3px 0 var(--main-color);
 	transition: 0.3s;
 }
 
 .paginate li:hover {
-	color: rgb(255, 123, 0) !important;
+	color: var(--main-color) !important;
 }
 
 .paginate a:hover {
-	color: rgb(255, 123, 0) !important;
+	color: var(--main-color) !important;
 	scale: 1.1;
-	box-shadow: 0 2px 5px 0 rgb(255, 123, 0);
+	box-shadow: 0 2px 5px 0 var(--main-color);
 }
 
 .paginate a.active {
-	color: rgb(255, 123, 0) !important;
+	color: var(--main-color) !important;
 }
 
 .paginate li:first-child a {

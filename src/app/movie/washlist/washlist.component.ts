@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { MovieInterface } from "../movie-interface";
 import { WatchlistService } from "../services/watchlist.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: "app-washlist",
@@ -10,7 +11,9 @@ import { WatchlistService } from "../services/watchlist.service";
 export class WashlistComponent {
   watchlistMovies: MovieInterface[] = [];
   posterPrefix: string = "https://image.tmdb.org/t/p/w500/";
-  constructor(private watchlist: WatchlistService) {}
+  constructor(private watchlist: WatchlistService,private Title: Title) {
+    this.Title.setTitle("Watchlist");
+  }
   ngOnInit() {
     this.getAllMoviesInWatchlist();
   }

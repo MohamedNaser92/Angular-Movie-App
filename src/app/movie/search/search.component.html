@@ -1,16 +1,54 @@
-<app-input (searchMovie)="searchMovies($event)"></app-input>
+<div style="margin: 100px 0 100px 0">
+	<app-input (searchMovie)="searchMovies($event)"></app-input>
+</div>
 
 <section class="home">
 	<div class="container">
 		<div class="row">
-			<div class="d-flex align-items-center justify-content-start mb-4">
-				<span class="text-white h3 fw-bold me-4">Search Result for: </span>
-				<span class="text-white fw-medium h4 me-4"> {{ query }} </span>
-				<br />
-				<br />
-				<span class="text-white fw-medium h5 me-4"> search results: </span>
-				<span class="text-white fw-medium h4"> {{ totalResults }} movies </span>
+			<!--No Search-->
+			<div
+				class="col-md-12 d-flex align-items-center justify-content-center"
+				*ngIf="filterdMovie.length == 0"
+				style="margin-top: 180px">
+				<div>
+					<div
+						class="d-flex justify-content-center align-items-center"
+						style="margin-bottom: 230px">
+						<i
+							class="text-center fa-solid fa-magnifying-glass fa-2xl"
+							style="scale: 8; text-shadow: 0 0 1.5px rgb(255 123 0 / 40%)"></i>
+					</div>
+					<div
+						class="d-flex justify-content-center align-items-center fw-bold"
+						style="margin-bottom: 100px">
+						<p style="scale: 3; text-shadow: 0px 0px 3px rgb(255 123 0 / 40%)">
+							What are you looking for ?
+						</p>
+					</div>
+				</div>
 			</div>
+
+			<!--If there is a Search-->
+			<!-- <div class="d-flex align-items-center justify-content-start mb-4" *ngIf="query != ''"> -->
+
+			<div
+				class="d-flex align-items-center justify-content-between mb-5 mt-4"
+				*ngIf="query != ''">
+				<div class="res me-4" style="color: rgb(255 123 0); padding: 5px 15px">
+					<span class="me-2 fw-bold" style="font-size: 20px"
+						>Search Result for:</span
+					>
+					<span style="font-size: 20px">{{ query }}</span>
+				</div>
+
+				<div class="res" style="color: rgb(255 123 0); padding: 5px 15px">
+					<span class="me-2 fw-bold" style="font-size: 20px"
+						>Search results:</span
+					>
+					<span style="font-size: 20px">{{ totalResults }} movies</span>
+				</div>
+			</div>
+			<!-- </div> -->
 			<div
 				*ngFor="let movie of filterdMovie"
 				class="col-lg-3 border border-0 rounded rounded-5">
@@ -18,12 +56,19 @@
 					<div class="movie-img">
 						<img
 							class="w-100 img-fluid"
-							[src]="posterPrefix + movie.poster_path" />
+							[src]="posterPrefix + movie.poster_path"
+							alt="" />
 					</div>
-					<div class="movie_text position-absolute top-0 p-3">
-						<h2 class="title mb-5">{{ movie.title }}</h2>
-						<p class="text mt-5">{{ movie.overview | minimizeDescription }}</p>
+					<div class="rate position-absolute">
+						<p>{{ movie.vote_average | number : '1.0-1' }} / 10</p>
 					</div>
+
+					<div
+						class="movie_text position-absolute top-0 d-flex justify-content-start align-items-start flex-column p-3">
+						<h2 class="title mt-3">{{ movie.title | minimizeTitle }}</h2>
+						<p class="text">{{ movie.overview | minimizeDescription }}</p>
+					</div>
+
 					<a [routerLink]="['/movie-details', movie.id, movie.title]">
 						<button class="show_more btn position-absolute">Show More</button>
 					</a>
@@ -39,7 +84,7 @@
 		</div>
 	</div>
 
-	<div class="paginate">
+	<div class="paginate" *ngIf="filterdMovie.length != 0">
 		<ul class="pagination">
 			<li [routerLink]="['/search']">
 				<a (click)="top()" (click)="onPageChange(currentPage - 1)"
@@ -59,3 +104,5 @@
 		</ul>
 	</div>
 </section>
+
+<!-- <a [routerLink]="['/movie-details', movie.id, movie.title]"></a> -->

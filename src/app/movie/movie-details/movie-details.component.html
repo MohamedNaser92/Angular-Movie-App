@@ -4,7 +4,7 @@
 		background:
 			'url(' +
 			posterPrefix +
-			movieDetails.backdrop_path +
+			movieDetails?.backdrop_path +
 			') no-repeat center center/ cover fixed'
 	}"></div>
 <section class="details">
@@ -15,37 +15,49 @@
 					<div class="movie-img">
 						<img
 							class="w-100 img-fluid"
-							[src]="posterPrefix + movieDetails.poster_path"
+							[src]="posterPrefix + movieDetails?.poster_path"
 							alt="Movie Poster" />
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-8 mt-2">
 				<div class="movie-text text-white">
-					<span class="position-relative"
-						><i
-							class="fa-regular fa-heart fa-2xl position-absolute f"
-							(click)="toggleWatchlist(movieDetails.id)"
-							[ngClass]="{
-								'fa-solid': isExistInWatchlist(movieDetails.id),
-								'fa-regular': !isExistInWatchlist(movieDetails.id)
-							}"></i></span
-					>ß
-
-					<h2 class="fs-1">{{ movieDetails.title }}</h2>
-					<p class="fs-5">{{ movieDetails.release_date | date : 'yyy' }}</p>
-					<p class="fs-5">
-						Movie Language: {{ movieDetails.original_language }}
+					<h2 class="fs-1">{{ movieDetails?.original_title }}</h2>
+					<p class="fs-5">{{ movieDetails?.release_date | date : 'yyy' }}</p>
+					<span
+						class="genre fs-5 me-2"
+						*ngFor="let genre of movieDetails?.genres"
+						>{{ genre.name }}</span
+					>
+					<p class="fs-5 mt-3">
+						Movie Language: {{ movieDetails!.spoken_languages[0].english_name }}
 					</p>
-
 					<span class="rating d-flex"
 						><img
 							class="imdb"
 							src="../../../assets/imdb-seeklogo.com.svg"
 							alt="Imdb Logo" />
-						{{ movieDetails.vote_average | number : '1.0-1' }} / 10</span
+						{{ movieDetails?.vote_average | number : '1.0-1' }} / 10</span
 					>
-					<p class="fs-5 mt-5">{{ movieDetails.overview }}</p>
+					<p class="fs-5 mt-4">{{ movieDetails?.overview }}</p>
+					<div class="btn-icon d-flex">
+						<a
+							[href]="movieDetails?.homepage"
+							target="_blank"
+							class="video-btn text-white">
+							<div class="icon"><i class="fa-solid fa-play"></i></div>
+							Visit Movie Website
+						</a>
+						<div class="position-relative">
+							<i
+								class="fa-regular fa-heart fa-2xl position-absolute f"
+								(click)="toggleWatchlist(movieDetails!.id)"
+								[ngClass]="{
+									'fa-solid': isExistInWatchlist(movieDetails!.id),
+									'fa-regular': !isExistInWatchlist(movieDetails!.id)
+								}"></i>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

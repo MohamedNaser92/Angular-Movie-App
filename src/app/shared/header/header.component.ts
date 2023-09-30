@@ -8,10 +8,11 @@ import { WatchlistService } from 'src/app/movie/services/watchlist.service';
 	styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-	@HostListener('window:scroll', ['$event'])
+	
 	watchlistCount: number = 0;
 	constructor(private watchlist: WatchlistService) {}
 
+	@HostListener('window:scroll', ['$event'])
 	onWindowScroll() {
 		let element = document.querySelector('nav') as HTMLElement;
 		if (window.pageYOffset > element.clientHeight) {

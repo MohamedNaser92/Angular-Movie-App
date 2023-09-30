@@ -1,5 +1,5 @@
 .wrapper {
-    margin-top: 70px !important;
+    margin-top: 0px !important;
 }
 
 .container {
@@ -9,14 +9,14 @@
 
 .input {
     width: 400px;
-    border: 1px solid rgb(255, 123, 0);
+    border: 1px solid var(--main-color);
     background: transparent;
     padding: 15px 30px;
     border-radius: 50px 0px 0px 50px;
     outline: none;
     font-size: 18px;
     color: #fff;
-    box-shadow: 0 0 10px 0 rgb(255, 123, 0);
+    box-shadow: 0 0 10px 0 var(--main-color);
 }
 
 input::placeholder {
@@ -28,7 +28,7 @@ input::placeholder {
     padding: 15px 30px;
     cursor: pointer;
     color: white;
-    background: rgb(255, 123, 0);
+    background: var(--main-color);
     border: 0px;
     width: 120px;
     height: 63px !important;
@@ -36,5 +36,5 @@ input::placeholder {
     outline: none;
     text-transform: uppercase;
     font-weight: bold;
-    box-shadow: 3px 0 10px 0 rgb(255, 123, 0);
+    box-shadow: 3px 0 10px 0 var(--main-color);
 }
