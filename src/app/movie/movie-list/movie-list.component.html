@@ -15,31 +15,34 @@
 				</div>
 			</div>
 
-			<div style="margin-bottom: 100px;">
+			<div style="margin:100px 0 100px 0;">
 				<app-input (searchMovie)="searchMovies($event)"></app-input>
 			</div>
 			<!-- The page has Been Loaded -->
 			<div *ngFor="let movie of trendingMovies" class="col-lg-3 border border-0 rounded rounded-5">
 				<div class="movie_card position-relative mb-4">
-					<div class="movie-img">
-						<img class="w-100 img-fluid" [src]="posterPrefix + movie.poster_path" alt="" />
-					</div>
-					<div class="rate position-absolute ">
-						<p>{{movie.vote_average | number: '1.0-1'}} / 10 </p>
-					</div>
-
-					<div
-						class="movie_text position-absolute top-0 d-flex justify-content-start  align-items-start  flex-column p-3">
-						<h2 class="title">{{ movie.title | minimizeTitle}}</h2>
-						<p class="text">{{movie.overview | minimizeDescription}}</p>
-					</div>
 					<a [routerLink]="['/movie-details', movie.id, movie.title]">
-						<button class="show_more btn position-absolute">Show More</button></a>
-					<i class="fa-regular fa-heart fa-2xl position-absolute f" (click)="toggleWatchlist(movie.id)"
-						[ngClass]="{
+						<div class="movie-img">
+							<img class="w-100 img-fluid" [src]="posterPrefix + movie.poster_path" alt="" />
+						</div>
+						<div class="rate position-absolute ">
+							<p>{{movie.vote_average | number: '1.0-1'}} / 10 </p>
+						</div>
+
+						<div
+							class="movie_text position-absolute top-0 d-flex justify-content-start  align-items-start  flex-column p-3">
+							<h2 class="title mt-3">{{ movie.title | minimizeTitle}}</h2>
+							<p class="text">{{movie.overview | minimizeDescription}}</p>
+						</div>
+
+						<a [routerLink]="['/movie-details', movie.id, movie.title]">
+							<button class="show_more btn position-absolute">Show More</button> </a>
+						<i class="fa-regular fa-heart fa-2xl position-absolute f" (click)="toggleWatchlist(movie.id)"
+							[ngClass]="{
 							'fa-solid': isExistInWatchlist(movie.id),
 							'fa-regular': !isExistInWatchlist(movie.id)
 						}"></i>
+					</a>
 				</div>
 			</div>
 		</div>

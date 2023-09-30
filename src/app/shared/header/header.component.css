@@ -10,7 +10,7 @@
 }
 
 .navbar-brand {
-	color: rgb(255, 123, 0);
+	color: var(--main-color);
 }
 
 .logo {
@@ -23,11 +23,10 @@
 	position: absolute;
 	color: white;
 	z-index: 10;
-	left: 100px;
+	left: 234px;
 	top: 18px;
 	letter-spacing: 5px;
 	text-shadow: -6px -3px 4px #000000;
-
 }
 
 .nav-link {
@@ -36,8 +35,7 @@
 }
 
 .fa-heart {
-	color: rgb(255, 123, 0);
-
+	color: var(--main-color);
 	margin: 5px;
 }
 

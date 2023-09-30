@@ -3,6 +3,7 @@ import { MovieInterface } from '../movie-interface';
 import { SearchService } from '../services/search.service';
 import { WatchlistService } from '../services/watchlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-search',
@@ -24,10 +25,13 @@ export class SearchComponent {
 		public _SearchService: SearchService,
 		private watchlist: WatchlistService,
 		private router: Router,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private Title: Title
 	) {}
 
 	ngOnInit() {
+		this.Title.setTitle('Search Results');
+
 		this._SearchService.getMovies().subscribe((val) => {
 			this.filterdMovie = val;
 		});

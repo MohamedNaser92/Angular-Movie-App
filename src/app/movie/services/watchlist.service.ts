@@ -19,7 +19,7 @@ export class WatchlistService {
 	watchListMovies: Observable<Set<number>> =
 		this.watchlistChanges.asObservable();
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) { }
 
 	addToWatchlist(movieId: number): Observable<any> {
 		console.log('watchlist', this.watchlist);

@@ -4,6 +4,7 @@ import { MovieInterface } from '../movie-interface';
 import { MovieService } from '../services/movie.service';
 import { WatchlistService } from '../services/watchlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Title} from "@angular/platform-browser";
 
 @Component({
 	selector: 'app-movie-list',
@@ -24,8 +25,11 @@ export class MovieListComponent {
 		private movieService: MovieService,
 		private watchlist: WatchlistService,
 		private router: Router,
-		private route: ActivatedRoute
-	) {}
+		private route: ActivatedRoute,
+		private Title: Title
+	) {
+		this.Title.setTitle("Cima");
+	}
 
 	ngOnInit() {
 		// To get pages in home
