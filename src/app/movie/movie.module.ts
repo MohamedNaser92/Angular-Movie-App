@@ -9,7 +9,7 @@ import { MinimizeDescriptionPipe } from "./pipes/minimize-description.pipe";
 import { FormsModule } from "@angular/forms";
 import { InputComponent } from "./search/input/input.component";
 import { SearchService } from "./services/search.service";
-import { MinimizeTitlePipe } from './pipes/minimize-title.pipe';
+import { MinimizeTitlePipe } from "./pipes/minimize-title.pipe";
 
 @NgModule({
   declarations: [
