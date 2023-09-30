@@ -6,15 +6,15 @@
 .nav-scroll {
 	background-color: #000 !important;
 	box-shadow: 0px 3px 20px 0px rgb(255 123 0 / 35%);
-
 }
 
 .navbar-brand {
 	color: var(--main-color);
+	position: relative;
 }
 
 .logo {
-	position: relative;
+	/* position: relative; */
 	transform: rotate(345deg);
 	z-index: 9;
 }
@@ -23,8 +23,8 @@
 	position: absolute;
 	color: white;
 	z-index: 10;
-	left: 234px;
-	top: 18px;
+	left: 75%;
+	top: 5px;
 	letter-spacing: 5px;
 	text-shadow: -6px -3px 4px #000000;
 }
@@ -41,6 +41,7 @@
 
 .watchlist {
 	position: relative;
+	text-shadow: -6px -3px 4px #000000;
 }
 
 .counter {
@@ -50,9 +51,5 @@
 	color: #fff;
 	font-size: 20px;
 	font-weight: 600;
-
-	/*right: 47%;
-	color: #fff;
-	font-size: 15px; */
-
+	text-shadow: -6px -3px 4px #000000;
 }

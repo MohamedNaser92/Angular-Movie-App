@@ -4,7 +4,7 @@ import { MovieInterface } from '../movie-interface';
 import { MovieService } from '../services/movie.service';
 import { WatchlistService } from '../services/watchlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Title} from "@angular/platform-browser";
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-movie-list',
@@ -28,7 +28,7 @@ export class MovieListComponent {
 		private route: ActivatedRoute,
 		private Title: Title
 	) {
-		this.Title.setTitle("Cima");
+		this.Title.setTitle('Cima');
 	}
 
 	ngOnInit() {
@@ -66,12 +66,10 @@ export class MovieListComponent {
 	}
 	// To Add or Remove Movie From Watchlist
 	toggleWatchlist(movieId: number) {
-		console.log(movieId);
 		this.watchlist.addToWatchlist(movieId).subscribe(() => {});
 	}
 	// To check is the Movie in watchlist
 	isExistInWatchlist(movieId: number): boolean {
-		console.log();
 		return this.watchlist.isExistInWatchlist(movieId);
 	}
 

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../services/movie.service';
+
 import { MovieInterface } from '../movie-interface';
 import { CommonModule } from '@angular/common';
 import { WatchlistService } from '../services/watchlist.service';
-import {Title} from "@angular/platform-browser";
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-movie-details',
@@ -26,7 +27,7 @@ export class MovieDetailsComponent implements OnInit {
 			this.movieId = params.get('id');
 		});
 
-		this.Title.setTitle("Movie Details");
+		this.Title.setTitle('Movie Details');
 
 		this._MovieService.getMovieDetails(this.movieId).subscribe({
 			next: (response) => (this.movieDetails = response),
@@ -37,12 +38,10 @@ export class MovieDetailsComponent implements OnInit {
 
 	// To Add or Remove Movie From Watchlist
 	toggleWatchlist(movieId: number) {
-		console.log(movieId);
 		this.watchlist.addToWatchlist(movieId).subscribe(() => {});
 	}
 	// To check is the Movie in watchlist
 	isExistInWatchlist(movieId: number): boolean {
-		console.log();
 		return this.watchlist.isExistInWatchlist(movieId);
 	}
 }

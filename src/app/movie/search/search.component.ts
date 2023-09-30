@@ -59,12 +59,10 @@ export class SearchComponent {
 
 	// To Add or Remove Movie From Watchlist
 	toggleWatchlist(movieId: number) {
-		console.log(movieId);
 		this.watchlist.addToWatchlist(movieId).subscribe(() => {});
 	}
 	// To check is the Movie in watchlist
 	isExistInWatchlist(movieId: number): boolean {
-		console.log();
 		return this.watchlist.isExistInWatchlist(movieId);
 	}
 
@@ -78,8 +76,6 @@ export class SearchComponent {
 				.getSearchedItemsOtherPages(this.query, this.currentPage)
 				.subscribe((res) => {
 					this.filterdMovie = res.results;
-					console.log('from load', this.query, this.currentPage);
-					console.log(this.filterdMovie);
 				});
 		}
 	}

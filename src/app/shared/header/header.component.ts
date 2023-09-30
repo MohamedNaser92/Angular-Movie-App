@@ -8,7 +8,6 @@ import { WatchlistService } from 'src/app/movie/services/watchlist.service';
 	styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-	
 	watchlistCount: number = 0;
 	constructor(private watchlist: WatchlistService) {}
 
@@ -24,7 +23,6 @@ export class HeaderComponent {
 	ngOnInit() {
 		this.watchlist.watchListMovies.subscribe((watchlist) => {
 			this.watchlistCount = watchlist.size;
-			console.log('countwatchlist', this.watchlistCount);
 		});
 	}
 }

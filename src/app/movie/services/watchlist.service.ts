@@ -19,10 +19,10 @@ export class WatchlistService {
 	watchListMovies: Observable<Set<number>> =
 		this.watchlistChanges.asObservable();
 
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) {}
 
 	addToWatchlist(movieId: number): Observable<any> {
-		console.log('watchlist', this.watchlist);
+		// console.log('watchlist', this.watchlist);
 		if (this.watchlist.has(movieId)) {
 			return this.removeFromWatchlist(movieId);
 		}
@@ -85,7 +85,6 @@ export class WatchlistService {
 	}
 
 	isExistInWatchlist(movieId: number): boolean {
-		console.log();
 		return this.watchlist.has(movieId);
 	}
 }
